@@ -72,11 +72,11 @@ if not WGET_AT:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = '20240514.01'
+VERSION = '20240517.01'
 USER_AGENT = 'Mozilla/5.0 (X11; Linux i686; rv:124.0) Gecko/20100101 Firefox/124.0'
 TRACKER_ID = 'postnews'
 TRACKER_HOST = 'legacy-api.arpa.li'
-MULTI_ITEM_SIZE = 10
+MULTI_ITEM_SIZE = 1
 
 
 ###########################################################################
@@ -303,7 +303,7 @@ class WgetArgs(object):
             item_type, item_value = item_name.split(':', 1)
             if item_type == 'profile':
                 wget_args.extend(['--warc-header', 'post-news-profile: '+item_value])
-                wget_args.append('https://n1nzo2oxji.execute-api.us-east-1.amazonaws.com/prod/public/profiles/@'+item_value)
+                wget_args.append('https://n1nzo2oxji.execute-api.us-east-1.amazonaws.com/prod/public/profiles/@'+item_value.lower())
             elif item_type == 'post':
                 wget_args.extend(['--warc-header', 'post-news-post-id: '+item_value])
                 wget_args.append('https://n1nzo2oxji.execute-api.us-east-1.amazonaws.com/prod/public/posts/'+item_value)
