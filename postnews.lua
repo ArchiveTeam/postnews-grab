@@ -364,7 +364,9 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
       elseif type(k) == "string" then
         if k == "userName" then
           discover_item(discovered_items, "profile:" .. v)
-        elseif k == "postId" then
+        elseif k == "postId"
+          or k == "parentId"
+          or k == "threadId" then
           discover_item(discovered_items, "post:" .. v)
         elseif string.match(k, "[iI]mageId$") then
           discover_item(discovered_items, "image:" .. v)
